@@ -15,10 +15,10 @@ Below is the JSON viewer for the Database Optimization Guide. You can view the g
 """)
 
 # Link to download the database optimization JSON file
-st.markdown("[Download Database Optimization Guide](data/DBOptimization.json)")
+st.markdown("[Download Database Optimization Guide](/workspaces/TechCompass/data/DBOptimization.json)")
 
 # JSON viewer
-json_file_path = r"data/DBOptimization.json"
+json_file_path = r"/workspaces/TechCompass/data/DBOptimization.json"
 if os.path.exists(json_file_path):
     with open(json_file_path, "r") as json_file:
         db_optimization_guide = json.load(json_file)
