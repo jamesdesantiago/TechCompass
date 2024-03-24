@@ -15,10 +15,10 @@ Below is the JSON viewer for the Database Optimization Guide. You can view the g
 """)
 
 # Link to download the database optimization JSON file
-st.markdown("[Download Database Optimization Guide](data/dboptimization.json)")
+st.markdown("[Download Database Optimization Guide](data/DBOptimization.json)")
 
 # JSON viewer
-json_file_path = r"/data/dboptimization.json"
+json_file_path = os.path.join("data", "dboptimization.json")
 if os.path.exists(json_file_path):
     with open(json_file_path, "r") as json_file:
         db_optimization_guide = json.load(json_file)
