@@ -64,92 +64,76 @@
         "peak_load_management": "Apply auto-scaling, load shedding, and rate limiting to handle demand spikes without degrading system performance."
       }
     },
-    "security_best_practices": {
-      "description": "Outlines security best practices in database optimization, covering encryption's impact on performance and secure access. Focuses on securing data both in transit and at rest, managing access controls efficiently, and implementing auditing and monitoring for compliance.",
-      "practices": {
-        "encryption": "Strategies for applying encryption without significantly impacting performance.",
-        "access_control": "Techniques for managing database access securely, including role-based access control (RBAC) and least privilege principles.",
-        "auditing_and_monitoring": "Implementing auditing for changes and access to sensitive data, along with real-time monitoring for unusual access patterns."
-      }
-    },
-    "future_trends_and_technologies": {
-      "description": "Explores potential future trends and emerging technologies that could impact database optimization strategies. Highlights the promise of AI/ML in automating database tuning, the advent of new database architectures, and the integration of big data technologies for superior data analysis capabilities.",
-      "trends": {
-        "AI_and_ML": "The use of artificial intelligence and machine learning for predictive database tuning and maintenance.",
-        "new_database_architectures": "Exploration of non-traditional database models and architectures designed for specific use cases, such as graph databases for complex data relationships.",
-        "big_data_technologies": "Leveraging big data platforms and technologies for processing and analyzing large datasets in an optimized manner."
-      },
       "query_optimization_tips": {
-        "select_necessary_columns": {
-          "description": "Specify only the columns you need instead of using SELECT *. This reduces data read and transfer over the network.",
-          "example": "SELECT employee_id, first_name, last_name FROM employees;"
-        },
-        "use_where_clauses_wisely": {
-          "description": "Filter results with WHERE clauses to minimize processed and returned rows. Avoid using functions in WHERE clauses that prevent index use.",
-          "example": "SELECT employee_id, first_name FROM employees WHERE department_id = 5;"
-        },
-        "leverage_indexes": {
-          "description": "Make sure your queries take advantage of indexes to speed up data retrieval. Index columns based on your query patterns.",
-          "example": "CREATE INDEX idx_department_id ON employees(department_id);"
-        },
-        "limit_select_distinct": {
-          "description": "SELECT DISTINCT removes duplicates but can be costly. Restructure your query or data model to avoid its need.",
-          "example": "SELECT DISTINCT department_id FROM employees;"
-        },
-        "minimize_joins": {
-          "description": "Limit the number of joins, especially with large tables. Ensure joins are on indexed columns.",
-          "example": "SELECT e.first_name, d.department_name FROM employees e JOIN departments d ON e.department_id = d.department_id;"
-        },
-        "use_aggregation_wisely": {
-          "description": "Aggregation functions on large datasets can be resource-intensive. Filter data with WHERE before aggregating.",
-          "example": "SELECT COUNT(*) FROM employees WHERE department_id = 5;"
-        },
-        "implement_pagination": {
-          "description": "Use LIMIT and OFFSET for large datasets to improve performance and usability.",
-          "example": "SELECT employee_id, first_name FROM employees LIMIT 10 OFFSET 20;"
-        },
-        "efficient_subqueries": {
-          "description": "Subqueries can be less efficient than joins. Evaluate and rewrite as joins where possible.",
-          "example": "SELECT employee_id FROM employees WHERE department_id IN (SELECT department_id FROM departments WHERE location_id = 3);"
-        },
-        "utilize_explain": {
-          "description": "Use EXPLAIN to understand how a query will be executed, including index use.",
-          "example": "EXPLAIN SELECT * FROM employees WHERE department_id = 5;"
-        },
-        "review_and_optimize_regularly": {
-          "description": "Regularly review and optimize your queries based on current data and usage patterns. Performance tuning is ongoing.",
-          "example": "Regular query audits and optimizations based on EXPLAIN outputs and application performance monitoring."
-        },
-        "version_control_for_database_schema": {
-          "description": "Discusses the significance of using version control systems for managing database schemas, allowing teams to track and revert changes, collaborate more effectively, and automate deployment processes. This ensures a reliable, auditable history of modifications and facilitates continuous integration and delivery workflows.",
-          "tools": {
-            "Liquibase": "An open-source database-independent library for tracking, managing, and applying database schema changes.",
-            "Flyway": "An open-source tool that simplifies database migration with plain SQL scripts and embraces version control for your database schema."
-          }
-        },
-        "automated_testing_and_validation": {
-          "description": "Highlights the importance of automated testing frameworks and validation processes for database changes to ensure that optimizations do not break existing functionality or degrade performance. Automated testing helps in identifying potential issues early in the development cycle, making the optimization process more reliable.",
-          "strategies": {
-            "unit_testing": "Testing individual components of the database operations for correctness, such as stored procedures, functions, and triggers.",
-            "integration_testing": "Ensuring that database changes interact correctly with other parts of the application and that performance benchmarks meet expected thresholds."
-          }
-        },
-        "cloud_database_optimization": {
-          "description": "Covers optimization strategies tailored to cloud-based databases, focusing on leveraging cloud-specific features and services to improve performance and reduce costs. This includes understanding auto-scaling capabilities, choosing appropriate instance types for your workload, and making use of managed services for maintenance and monitoring.",
-          "cloud_providers": {
-            "Amazon_RDS": "Tips for optimizing Amazon RDS instances, including storage and compute scaling, using Amazon Aurora for high-performance needs.",
-            "Azure_SQL_Database": "Best practices for Azure SQL Database, such as performance tuning with Azure SQL Database Advisor and scaling with Azure SQL Database elastic pools.",
-            "Google_Cloud_SQL": "Guidance on optimizing Google Cloud SQL instances, including choosing between MySQL, PostgreSQL, and SQL Server, and leveraging Google Cloud's performance insights."
-          }
-        },
-        "tooling_and_monitoring_solutions": {
-          "description": "Details on using tooling and monitoring solutions to continuously monitor database performance, identify bottlenecks, and gain insights into system health. Emphasizes the selection of tools based on the database environment and specific needs, covering both open-source and commercial options.",
-          "tools": {
-            "Prometheus_and_Grafana": "Utilizing Prometheus for database metrics collection and Grafana for visualization and alerting.",
-            "cloud_native_solutions": {
-              "Amazon_CloudWatch": "Leveraging CloudWatch for monitoring AWS database solutions and analyzing logs.",
-              "Azure_Monitor": "Using Azure Monitor to collect, analyze, and act on telemetry data from Azure databases."
-            }
+      "select_necessary_columns": {
+        "description": "Specify only the columns you need instead of using SELECT *. This reduces data read and transfer over the network.",
+        "example": "SELECT employee_id, first_name, last_name FROM employees;"
+      },
+      "use_where_clauses_wisely": {
+        "description": "Filter results with WHERE clauses to minimize processed and returned rows. Avoid using functions in WHERE clauses that prevent index use.",
+        "example": "SELECT employee_id, first_name FROM employees WHERE department_id = 5;"
+      },
+      "leverage_indexes": {
+        "description": "Make sure your queries take advantage of indexes to speed up data retrieval. Index columns based on your query patterns.",
+        "example": "CREATE INDEX idx_department_id ON employees(department_id);"
+      },
+      "limit_select_distinct": {
+        "description": "SELECT DISTINCT removes duplicates but can be costly. Restructure your query or data model to avoid its need.",
+        "example": "SELECT DISTINCT department_id FROM employees;"
+      },
+      "minimize_joins": {
+        "description": "Limit the number of joins, especially with large tables. Ensure joins are on indexed columns.",
+        "example": "SELECT e.first_name, d.department_name FROM employees e JOIN departments d ON e.department_id = d.department_id;"
+      },
+      "use_aggregation_wisely": {
+        "description": "Aggregation functions on large datasets can be resource-intensive. Filter data with WHERE before aggregating.",
+        "example": "SELECT COUNT(*) FROM employees WHERE department_id = 5;"
+      },
+      "implement_pagination": {
+        "description": "Use LIMIT and OFFSET for large datasets to improve performance and usability.",
+        "example": "SELECT employee_id, first_name FROM employees LIMIT 10 OFFSET 20;"
+      },
+      "efficient_subqueries": {
+        "description": "Subqueries can be less efficient than joins. Evaluate and rewrite as joins where possible.",
+        "example": "SELECT employee_id FROM employees WHERE department_id IN (SELECT department_id FROM departments WHERE location_id = 3);"
+      },
+      "utilize_explain": {
+        "description": "Use EXPLAIN to understand how a query will be executed, including index use.",
+        "example": "EXPLAIN SELECT * FROM employees WHERE department_id = 5;"
+      },
+      "review_and_optimize_regularly": {
+        "description": "Regularly review and optimize your queries based on current data and usage patterns. Performance tuning is ongoing.",
+        "example": "Regular query audits and optimizations based on EXPLAIN outputs and application performance monitoring."
+      },
+      "version_control_for_database_schema": {
+        "description": "Discusses the significance of using version control systems for managing database schemas, allowing teams to track and revert changes, collaborate more effectively, and automate deployment processes. This ensures a reliable, auditable history of modifications and facilitates continuous integration and delivery workflows.",
+        "tools": {
+          "Liquibase": "An open-source database-independent library for tracking, managing, and applying database schema changes.",
+          "Flyway": "An open-source tool that simplifies database migration with plain SQL scripts and embraces version control for your database schema."
+        }
+      },
+      "automated_testing_and_validation": {
+        "description": "Highlights the importance of automated testing frameworks and validation processes for database changes to ensure that optimizations do not break existing functionality or degrade performance. Automated testing helps in identifying potential issues early in the development cycle, making the optimization process more reliable.",
+        "strategies": {
+          "unit_testing": "Testing individual components of the database operations for correctness, such as stored procedures, functions, and triggers.",
+          "integration_testing": "Ensuring that database changes interact correctly with other parts of the application and that performance benchmarks meet expected thresholds."
+        }
+      },
+      "cloud_database_optimization": {
+        "description": "Covers optimization strategies tailored to cloud-based databases, focusing on leveraging cloud-specific features and services to improve performance and reduce costs. This includes understanding auto-scaling capabilities, choosing appropriate instance types for your workload, and making use of managed services for maintenance and monitoring.",
+        "cloud_providers": {
+          "Amazon_RDS": "Tips for optimizing Amazon RDS instances, including storage and compute scaling, using Amazon Aurora for high-performance needs.",
+          "Azure_SQL_Database": "Best practices for Azure SQL Database, such as performance tuning with Azure SQL Database Advisor and scaling with Azure SQL Database elastic pools.",
+          "Google_Cloud_SQL": "Guidance on optimizing Google Cloud SQL instances, including choosing between MySQL, PostgreSQL, and SQL Server, and leveraging Google Cloud's performance insights."
+        }
+      },
+      "tooling_and_monitoring_solutions": {
+        "description": "Details on using tooling and monitoring solutions to continuously monitor database performance, identify bottlenecks, and gain insights into system health. Emphasizes the selection of tools based on the database environment and specific needs, covering both open-source and commercial options.",
+        "tools": {
+          "Prometheus_and_Grafana": "Utilizing Prometheus for database metrics collection and Grafana for visualization and alerting.",
+          "cloud_native_solutions": {
+            "Amazon_CloudWatch": "Leveraging CloudWatch for monitoring AWS database solutions and analyzing logs.",
+            "Azure_Monitor": "Using Azure Monitor to collect, analyze, and act on telemetry data from Azure databases."
           }
         }
       }
