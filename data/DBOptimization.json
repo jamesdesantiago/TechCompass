@@ -98,9 +98,32 @@
         "description": "Subqueries can be less efficient than joins. Evaluate and rewrite as joins where possible.",
         "example": "SELECT employee_id FROM employees WHERE department_id IN (SELECT department_id FROM departments WHERE location_id = 3);"
       },
-      "utilize_explain": {
-        "description": "Use EXPLAIN to understand how a query will be executed, including index use.",
-        "example": "EXPLAIN SELECT * FROM employees WHERE department_id = 5;"
+      "utilize_query_execution_plans": {
+        "description": "Use EXPLAIN or SET SHOWPLAN_(ALL or XML), depending on the DBMS, to understand how a query will be executed, including index use.",
+        "DBMS": {
+          "SQL Server": {
+            "Graphical Execution Plan (SSMS)": "Use SET SHOWPLAN_XML ON; or the 'Display Estimated Execution Plan' button. For actual execution, click 'Include Actual Execution Plan' then run your query.",
+            "T-SQL": "Use SET SHOWPLAN_ALL ON; or SET SHOWPLAN_XML ON; before executing your query for a plan as text or XML."
+          },
+          "PostgreSQL": {
+            "EXPLAIN": "Prefix your query with EXPLAIN, like EXPLAIN SELECT * FROM your_table;. For more details, use EXPLAIN (ANALYZE, BUFFERS).",
+            "pgAdmin": "Provides a graphical interface to run EXPLAIN."
+          },
+          "MySQL": {
+            "EXPLAIN": "Prefix your statements with EXPLAIN, like EXPLAIN SELECT * FROM your_table;.",
+            "EXPLAIN ANALYZE": "For MySQL 8.0.18 and later, offers a detailed analysis by executing the query."
+          },
+          "Oracle": {
+            "EXPLAIN PLAN FOR": "Use before your query, like EXPLAIN PLAN FOR SELECT * FROM your_table;, then query the PLAN_TABLE.",
+            "SQL Developer": "Offers a graphical tool to display the execution plan."
+          },
+          "SQLite": {
+            "EXPLAIN QUERY PLAN": "Prefix your query with this command for a high-level overview."
+          }
+        },
+        "Tips": {
+          "General": "Look for full table scans, check index usage, review join types, and optimize subqueries and aggregations."
+        }
       }
     },
     "review_and_optimize_regularly": {
