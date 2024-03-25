@@ -7,9 +7,10 @@
       "unstructured": "Data without a predefined data model or organization, making it more complex to process and analyze systematically. This category includes most forms of content such as text documents, videos, images, and social media posts."
     },
     "data_size_definitions": {
-      "small": "Databases under 10GB in size. Often manageable on single servers, these databases can benefit from optimization strategies focused on indexing and query efficiency.",
-      "medium": "Databases ranging from 10GB to 1TB. This size range may require more sophisticated strategies such as partitioning and caching to maintain performance.",
-      "large": "Databases exceeding 1TB. Large databases typically involve distributed systems, advanced indexing, and data warehousing techniques to handle the volume and velocity of data."
+      "small": "Databases under 10GB in size and up to thousands of rows. Often manageable on single servers, these databases can benefit from optimization strategies focused on indexing and query efficiency.",
+      "medium": "Databases ranging from 10GB to 1TB and thousands to a few million rows. This size range may require more sophisticated strategies such as partitioning and caching to maintain performance.",
+      "large": "Databases exceeding 1TB and tens of millions of rows or more. Large databases typically involve distributed systems, advanced indexing, and data warehousing techniques to handle the volume and velocity of data.",
+      "very large": "Databases with hundreds of millions, billions of rows, or more. At this scale, traditional relational databases may not suffice, necessitating specialized data stores like NoSQL or time-series databases. Data warehousing becomes crucial for analytical workloads, enabling efficient querying on massive datasets. Employing big data technologies such as Hadoop or Spark is essential for processing data at this scale. Index management must be strategic, as excessive or poorly managed indexes can significantly impede write operations. This size category demands a comprehensive approach to data architecture to ensure performance and scalability."
     }
   },
   "optimization_strategies": {
@@ -100,41 +101,41 @@
       "utilize_explain": {
         "description": "Use EXPLAIN to understand how a query will be executed, including index use.",
         "example": "EXPLAIN SELECT * FROM employees WHERE department_id = 5;"
-      },
-      "review_and_optimize_regularly": {
-        "description": "Regularly review and optimize your queries based on current data and usage patterns. Performance tuning is ongoing.",
-        "example": "Regular query audits and optimizations based on EXPLAIN outputs and application performance monitoring."
-      },
-      "version_control_for_database_schema": {
-        "description": "Discusses the significance of using version control systems for managing database schemas, allowing teams to track and revert changes, collaborate more effectively, and automate deployment processes. This ensures a reliable, auditable history of modifications and facilitates continuous integration and delivery workflows.",
-        "tools": {
-          "Liquibase": "An open-source database-independent library for tracking, managing, and applying database schema changes.",
-          "Flyway": "An open-source tool that simplifies database migration with plain SQL scripts and embraces version control for your database schema."
-        }
-      },
-      "automated_testing_and_validation": {
-        "description": "Highlights the importance of automated testing frameworks and validation processes for database changes to ensure that optimizations do not break existing functionality or degrade performance. Automated testing helps in identifying potential issues early in the development cycle, making the optimization process more reliable.",
-        "strategies": {
-          "unit_testing": "Testing individual components of the database operations for correctness, such as stored procedures, functions, and triggers.",
-          "integration_testing": "Ensuring that database changes interact correctly with other parts of the application and that performance benchmarks meet expected thresholds."
-        }
-      },
-      "cloud_database_optimization": {
-        "description": "Covers optimization strategies tailored to cloud-based databases, focusing on leveraging cloud-specific features and services to improve performance and reduce costs. This includes understanding auto-scaling capabilities, choosing appropriate instance types for your workload, and making use of managed services for maintenance and monitoring.",
-        "cloud_providers": {
-          "Amazon_RDS": "Tips for optimizing Amazon RDS instances, including storage and compute scaling, using Amazon Aurora for high-performance needs.",
-          "Azure_SQL_Database": "Best practices for Azure SQL Database, such as performance tuning with Azure SQL Database Advisor and scaling with Azure SQL Database elastic pools.",
-          "Google_Cloud_SQL": "Guidance on optimizing Google Cloud SQL instances, including choosing between MySQL, PostgreSQL, and SQL Server, and leveraging Google Cloud's performance insights."
-        }
-      },
-      "tooling_and_monitoring_solutions": {
-        "description": "Details on using tooling and monitoring solutions to continuously monitor database performance, identify bottlenecks, and gain insights into system health. Emphasizes the selection of tools based on the database environment and specific needs, covering both open-source and commercial options.",
-        "tools": {
-          "Prometheus_and_Grafana": "Utilizing Prometheus for database metrics collection and Grafana for visualization and alerting.",
-          "cloud_native_solutions": {
-            "Amazon_CloudWatch": "Leveraging CloudWatch for monitoring AWS database solutions and analyzing logs.",
-            "Azure_Monitor": "Using Azure Monitor to collect, analyze, and act on telemetry data from Azure databases."
-          }
+      }
+    },
+    "review_and_optimize_regularly": {
+      "description": "Regularly review and optimize your queries based on current data and usage patterns. Performance tuning is ongoing.",
+      "example": "Regular query audits and optimizations based on EXPLAIN outputs and application performance monitoring."
+    },
+    "version_control_for_database_schema": {
+      "description": "Discusses the significance of using version control systems for managing database schemas, allowing teams to track and revert changes, collaborate more effectively, and automate deployment processes. This ensures a reliable, auditable history of modifications and facilitates continuous integration and delivery workflows.",
+      "tools": {
+        "Liquibase": "An open-source database-independent library for tracking, managing, and applying database schema changes.",
+        "Flyway": "An open-source tool that simplifies database migration with plain SQL scripts and embraces version control for your database schema."
+      }
+    },
+    "automated_testing_and_validation": {
+      "description": "Highlights the importance of automated testing frameworks and validation processes for database changes to ensure that optimizations do not break existing functionality or degrade performance. Automated testing helps in identifying potential issues early in the development cycle, making the optimization process more reliable.",
+      "strategies": {
+        "unit_testing": "Testing individual components of the database operations for correctness, such as stored procedures, functions, and triggers.",
+        "integration_testing": "Ensuring that database changes interact correctly with other parts of the application and that performance benchmarks meet expected thresholds."
+      }
+    },
+    "cloud_database_optimization": {
+      "description": "Covers optimization strategies tailored to cloud-based databases, focusing on leveraging cloud-specific features and services to improve performance and reduce costs. This includes understanding auto-scaling capabilities, choosing appropriate instance types for your workload, and making use of managed services for maintenance and monitoring.",
+      "cloud_providers": {
+        "Amazon_RDS": "Tips for optimizing Amazon RDS instances, including storage and compute scaling, using Amazon Aurora for high-performance needs.",
+        "Azure_SQL_Database": "Best practices for Azure SQL Database, such as performance tuning with Azure SQL Database Advisor and scaling with Azure SQL Database elastic pools.",
+        "Google_Cloud_SQL": "Guidance on optimizing Google Cloud SQL instances, including choosing between MySQL, PostgreSQL, and SQL Server, and leveraging Google Cloud's performance insights."
+      }
+    },
+    "tooling_and_monitoring_solutions": {
+      "description": "Details on using tooling and monitoring solutions to continuously monitor database performance, identify bottlenecks, and gain insights into system health. Emphasizes the selection of tools based on the database environment and specific needs, covering both open-source and commercial options.",
+      "tools": {
+        "Prometheus_and_Grafana": "Utilizing Prometheus for database metrics collection and Grafana for visualization and alerting.",
+        "cloud_native_solutions": {
+          "Amazon_CloudWatch": "Leveraging CloudWatch for monitoring AWS database solutions and analyzing logs.",
+          "Azure_Monitor": "Using Azure Monitor to collect, analyze, and act on telemetry data from Azure databases."
         }
       }
     }
