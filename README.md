@@ -1,4 +1,4 @@
-# TechCompass Streamlit Application
+# TechCompass
 
 TechCompass is a Streamlit application designed to guide users through various technological realms, including data engineering, programming, and automation techniques. This document outlines the structure and functionality of the TechCompass app.
 
